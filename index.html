@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VynStore</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- The Header Begins -->
+    <header>
+      <div class="logo">
+        <h3>Vyn<span>Store</span></h3>
+      </div>
+
+      <div class="search">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input
+          type="text"
+          id="search"
+          placeholder="Search products, brands..."
+        />
+      </div>
+
+      <button class="hamburger" id="hamburger">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+      <button id="cartBtn">
+        <i class="fa-solid fa-cart-arrow-down"></i> Cart
+        <span class="totalCart cardCart"></span>
+      </button>
+    </header>
+
+    <!-- The Navs Begins -->
+    <nav>
+      <ul>
+        <li class="active"><button>All</button></li>
+        <li><button>Audio</button></li>
+        <li><button>Wearables</button></li>
+        <li><button>Accessories</button></li>
+        <li><button>Mobile</button></li>
+        <li><button>Computing</button></li>
+      </ul>
+    </nav>
+
+    <!-- THE GRID -->
+    <section class="grid">
+      <!-- Product Grid -->
+      <div class="product_grid">
+        <div class="product_feature">
+          <div class="total_product">
+            <p><span id="totalProduct">6</span> products found</p>
+          </div>
+
+          <div class="feature">
+            <select id="featureProduct">
+              <option value="">Featured</option>
+              <option value="">Price: Low-High</option>
+              <option value="">Price: High-Low</option>
+              <option value="">Top Rated</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="cards_container"></div>
+      </div>
+
+      <!-- Cart Grid  -->
+      <div class="cart_grid">
+        <div class="cart_total">
+          <div>
+            <p>
+              <i class="fa-solid fa-cart-arrow-down"></i> <span>Your Cart</span>
+            </p>
+          </div>
+
+          <div class="p">
+            <p class="totalCart"><span>items</span></p>
+          </div>
+        </div>
+
+        <div class="cartSkeleton"></div>
+
+        <div class="spacer"></div>
+
+        <div class="promocode">
+          <div class="input_btn">
+            <input type="text" id="promoCode" placeholder="Promo Code..." />
+            <button id="promoCodeBtn">Apply</button>
+          </div>
+
+          <div class="carttotalbuy">
+            <div class="total_price">
+              <p class="colors">
+                Subtotal <span id="totalBuy">(4 items)</span>
+              </p>
+              <p class="colors" id="subtotal">$334.96</p>
+            </div>
+
+            <div class="total_price">
+              <p class="color">Promo: SAVE10</p>
+              <p class="color">Coming Soon</p>
+            </div>
+          </div>
+
+          <div class="total_price">
+            <p class="colors">shipping</p>
+            <p class="color">Free</p>
+          </div>
+        </div>
+
+        <div class="overall_total">
+          <p>Total</p>
+          <p id="totalPrice">$301.46</p>
+        </div>
+
+        <div class="payment">
+          <button id="paymentBtn">
+            <i class="fa-solid fa-lock"></i> <span>Secure Checkout</span>
+          </button>
+          <p>
+            <span><i class="fa-solid fa-shield" id="i"></i></span> SSL encryped
+            . Safe payments
+          </p>
+        </div>
+        <div class="paymentTransaction" id="paymentTrans">
+          <h1>Hurray! Thanks for Shopping with Us</h1>
+          <p>We look for forward to seeing you again</p>
+        </div>
+        <div class="overlay" id="overlay"></div>
+      </div>
+    </section>
+
+    <footer>
+      <p>&copy ZephyrrDevv || Powered by Vyntrax Industry</p>
+    </footer>
+
+    <div class="bottom_nav">
+      <div class="bottom_nav_item active" id="homeBtn">
+        <i class="fa-solid fa-house"></i>
+        <span>Home</span>
+      </div>
+
+      <div class="bottom_nav_item" id="cartNavBtn">
+        <i class="fa-solid fa-cart-arrow-down"></i>
+        <span>Cart</span>
+        <div class="bottom_badge totalCart"></div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

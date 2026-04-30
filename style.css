@@ -1,0 +1,721 @@
+@import url("https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Sofia&display=swap");
+
+:root {
+  --bg-main: #f0fdf4;
+  --bg-white: #ffffff;
+  --bg-card-image: #dcfce7;
+  --green-dark: #065f46;
+  --green-mid: #059669;
+  --green-light: #d1fae5;
+  --green-accent: #10b981;
+  --text-secondary: #64748b;
+  --text-white: #ffffff;
+  --border: #e2e8f0;
+  --gap-grid: 14px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Arimo", sans-serif;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-main);
+  padding-top: 120px;
+  padding-bottom: 40px;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: var(--green-dark);
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo h3 {
+  font-family: "Sofia", cursive;
+  font-size: 2em;
+  color: var(--green-light);
+}
+
+.logo span {
+  color: var(--green-accent);
+}
+
+.search {
+  position: relative;
+}
+
+.search input {
+  padding: 10px 10px 10px 35px;
+  width: 400px;
+  outline: none;
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.search input::placeholder {
+  color: rgba(231, 229, 229, 0.623);
+  font-family: "Sofia", cursive;
+}
+
+.search i {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(255, 255, 255, 0.5);
+  z-index: 1;
+}
+
+header button {
+  padding: 10px;
+  width: 90px;
+  border-radius: 7px;
+  border: none;
+  display: flex;
+  justify-content: space-around;
+  font-size: 12px;
+  color: white;
+  background: var(--green-mid);
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s all ease-in-out;
+}
+
+header button:hover {
+  transform: scale(0.92);
+}
+
+.cardCart {
+  display: none;
+}
+
+header button span {
+  background: white;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  color: green;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+nav {
+  position: fixed;
+  top: 54px;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  background: white;
+  border-bottom: 1px solid var(--border);
+}
+
+nav ul {
+  display: flex;
+  gap: 10px;
+  list-style: none;
+  padding: 10px 20px;
+  margin-bottom: 5px;
+}
+
+nav button {
+  padding: 6px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: transparent;
+  cursor: pointer;
+  font-family: "Sofia", cursive;
+}
+
+li.active {
+  background: #9ee9c296;
+  border-radius: 12px;
+  border: 1px solid #77e7c2;
+}
+
+nav.show {
+  display: block;
+}
+
+.search.show {
+  display: flex;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  min-height: 100vh;
+  align-items: stretch;
+  gap: 20px;
+}
+
+.product_feature {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  color: var(--text-secondary);
+  font-family: "Sofia", cursive;
+}
+
+.product_feature select {
+  padding: 4px 10px;
+  outline: none;
+  border-radius: 5px;
+  font-family: "Sofia", cursive;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+}
+
+.product_grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-grid);
+  padding: 20px 0px 20px 24px;
+}
+
+.cards_container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--gap-grid);
+}
+
+.card {
+  background: var(--bg-white);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #64748b79;
+}
+
+.card_image {
+  position: relative;
+  height: 150px;
+  background: var(--bg-card-image);
+}
+
+.card_image img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  transition: 0.5s ease-in-out all;
+  cursor: pointer;
+}
+
+.card_image img:hover {
+  transform: scale(1.2);
+}
+
+.tag {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: var(--green-mid);
+  color: white;
+  font-size: 10px;
+  padding: 3px 8px;
+  border-radius: 20px;
+  z-index: 2;
+}
+
+.card_body {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 10px;
+  font-family: "Sofia", cursive;
+  border-bottom: 1px solid rgba(228, 222, 222, 0.856);
+}
+
+.card_body h4 {
+  font-family: "Sofia", cursive;
+  color: var(--text-secondary);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.card_stars {
+  color: rgb(218, 163, 47);
+}
+
+.card_reviews {
+  color: var(--green-accent);
+}
+
+.card_footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  color: var(--green-mid);
+  font-size: 1em;
+  font-weight: 500;
+  font-family: "Sofia", cursive;
+}
+
+.old_price {
+  text-decoration: line-through;
+}
+
+.add_btn {
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: none;
+  color: var(--text-white);
+  background: var(--green-mid);
+  cursor: pointer;
+  font-size: 1em;
+  transition: 0.3s all ease-in-out;
+}
+
+.add_btn:hover {
+  transform: scale(0.92);
+}
+
+.cart_grid {
+  display: flex;
+  flex-direction: column;
+  background: white;
+  padding: 20px 0 20px 0;
+  border-left: 1px solid var(--border);
+}
+
+.cart_total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+  margin-left: 0px;
+  padding: 0 10px 10px 10px;
+  font-family: "Sofia", cursive;
+  color: var(--text-secondary);
+}
+
+.cart_total i {
+  color: var(--green-mid);
+}
+
+.p {
+  background: #e7f8f73a;
+  color: var(--green-mid);
+  padding: 3px 7px 3px 7px;
+  border-radius: 10px;
+  font-size: 13px;
+  border: 1px solid var(--border);
+}
+
+.cartSkeleton {
+  display: flex;
+  flex-direction: column;
+  padding: 5px 10px 5px 10px;
+}
+
+.cart_card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #e7f8f73a;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-bottom: 10px;
+  padding: 10px;
+  font-family: "Sofia", cursive;
+}
+
+.img_h {
+  display: flex;
+  gap: 15px;
+}
+.img_h h4 {
+  color: rgb(124, 123, 123);
+  font-size: 11px;
+  letter-spacing: 0.5px;
+}
+
+.img_h p {
+  color: var(--green-accent);
+}
+
+.cartbtn {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.btns {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+}
+
+.btns button {
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4px 7px 4px 7px;
+  background: #e7f8f73a;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  transition: 0.3s all ease-in-out;
+  cursor: pointer;
+}
+
+.btns button:hover {
+  transform: scale(0.92);
+}
+
+.btns p {
+  font-family: "Sofia", cursive;
+}
+
+.remove_btn {
+  font-family: "Sofia", cursive;
+  font-size: 12px;
+  background: transparent;
+  border: none;
+  color: #81858b;
+  cursor: pointer;
+  transition: 0.3s all ease-in-out;
+}
+
+.remove_btn:hover {
+  transform: scale(0.92);
+}
+
+.img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background-color: #b2c9c73a;
+  border-radius: 5px;
+}
+
+.img_h img {
+  background: white;
+  width: 70%;
+  height: 70%;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.promocode {
+  display: flex;
+  flex-direction: column;
+  padding: 5px 10px 5px 10px;
+  border-top: 1px solid var(--border);
+}
+
+.input_btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+  gap: 5px;
+}
+
+.input_btn input,
+.input_btn button {
+  height: 36px;
+  padding: 0px 15px;
+}
+
+.input_btn input {
+  width: 220px;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  outline: none;
+}
+
+.colors,
+.input_btn input::placeholder {
+  font-family: "Sofia", cursive;
+  color: var(--text-secondary);
+}
+
+.input_btn button {
+  background: #e7f8f73a;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  outline: none;
+  color: var(--green-mid);
+  font-family: "Sofia", cursive;
+  font-size: 11px;
+  transition: 0.3s all ease-in-out;
+  cursor: pointer;
+}
+
+.input_btn button:hover {
+  transform: scale(0.92);
+}
+
+.total_price {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+  font-family: "Sofia", cursive;
+  font-size: 13px;
+}
+
+.color {
+  color: var(--green-mid);
+}
+
+.overall_total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 10px 5px 10px;
+  border-top: 1px solid var(--border);
+  font-family: "Sofia", cursive;
+}
+
+.payment {
+  display: flex;
+  flex-direction: column;
+  font-family: "Sofia", cursive;
+  font-size: 10px;
+  padding: 15px;
+  color: var(--text-secondary);
+}
+
+.payment button {
+  padding: 10px;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  background-color: var(--green-mid);
+  color: white;
+  font-family: "Sofia", cursive;
+  font-size: 14px;
+  transition: 0.3s all ease-in-out;
+  cursor: pointer;
+}
+
+.payment button:hover {
+  transform: scale(0.92);
+}
+
+.payment p {
+  text-align: center;
+}
+
+#i {
+  color: var(--green-mid);
+}
+
+.hamburger {
+  display: none;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  /* background: var(--green-dark); */
+  color: white;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 2px black;
+  text-align: center;
+  padding: 10px 24px;
+  font-size: 13px;
+  z-index: 98;
+}
+
+.hamburger {
+  display: none;
+}
+
+.bottom_nav {
+  display: none;
+}
+
+.paymentTransaction {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  border-radius: 16px;
+  padding: 40px;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  z-index: 200;
+  border-top: 4px solid var(--green-mid);
+  max-width: 400px;
+  width: 90%;
+}
+
+.paymentTransaction h1 {
+  font-family: "Sofia", cursive;
+  color: var(--green-dark);
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.paymentTransaction p {
+  color: var(--text-secondary);
+  font-family: "Sofia", cursive;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.paymentTransaction::before {
+  content: "🎉🛍️🎊";
+  font-size: 2.5em;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 199;
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .search.show {
+    display: flex;
+    width: 300px;
+  }
+
+  .search {
+    display: none;
+  }
+
+  header {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  header #cartBtn {
+    display: none;
+  }
+
+  nav {
+    display: none;
+    top: 61px;
+  }
+
+  .hamburger {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    color: white;
+    border: none;
+    font-size: 1.5em;
+    width: auto;
+    padding: 5px;
+    cursor: pointer;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cart_grid {
+    display: none;
+  }
+
+  .product_grid {
+    padding: 20px 16px;
+  }
+
+  .bottom_nav {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--green-dark);
+    padding: 10px 40px;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 100;
+  }
+
+  .bottom_nav_item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    color: white;
+    cursor: pointer;
+    position: relative;
+    font-family: "Sofia", cursive;
+  }
+
+  .bottom_nav_item i {
+    color: var(--green-accent);
+  }
+
+  .bottom_badge {
+    display: none;
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    background: red;
+    color: white;
+    font-size: 9px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+  }
+
+  body {
+    padding-bottom: 60px;
+  }
+
+  footer {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .cards_container {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+
+  .logo h3 {
+    font-size: 1.5em;
+  }
+}
